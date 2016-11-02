@@ -41,14 +41,16 @@ body {
 
 #pseudo {
     border-style: none;
-    margin: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     box-shadow: 2px 2px lightgray;
     border-radius: .2em;
     padding: 10px;
 }
 
 #data {
-    margin: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     box-shadow: 2px 2px lightgray;
     border-radius: .2em;
     padding: 10px;
@@ -57,7 +59,8 @@ body {
 }
 
 #send {
-    margin: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     box-shadow: 2px 2px lightgray;
     border-radius: .2em;
     padding: 10px;

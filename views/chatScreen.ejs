@@ -4,12 +4,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="/public/jquery-1.8.0.js"></script>
     <script src="/socket.io/socket.io.js"></script>
-    <script src="/public/user.js"></script>
+    <script src="/public/chat.js"></script>
     <link rel="stylesheet" href="/public/bootstrap.css" />
     <script src="/public/bootstrap.js"></script>
-    <link rel="stylesheet" href="/public/user.css" />
+    <link rel="stylesheet" href="/public/chat.css" />
   </head>
-  <body id="body">
+  <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -29,26 +29,8 @@
 
     <div class="container">
       <div id="dashboard">
-        <div class="row" />
-        <div class="col-xs-10">
-          <form id="msg">
-            <input
-               class="col-xs-12"
-               id="pseudo"
-               placeholder="Surnom"
-             />
-            <textarea
-              class="col-xs-12"
-              id="data"
-              placeholder="Ton message"
-            ></textarea>
-            <button
-              type="submit"
-              id="send"
-              class="col-xs-12">
-              Envoyer
-            </button>
-          </form>
+        <div class="col-xs-12">
+          <div id="conversation"></div>
         </div>
       </div>
     </div>

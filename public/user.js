@@ -12,56 +12,28 @@ function escaped(s) {
 
 var socket = io.connect('/');
 
-// on connection to server, ask for user's name with an anonymous callback
-socket.on('connect', function () {
-    // call the server-side function 'adduser' and send one parameter (value of prompt)
-    socket.emit('adduser', name);
-});
-
-// listener, whenever the server emits 'updatechat', this updates the chat body
-socket.on('updatechat', function (username, data) {
-    if(bgColor == 5) {
-        bgColor = 0;
-    }
-    else {
-        bgColor += 1;
-    }
-    $('#conversation').append('<div class="messages" style="background-color:' + bgColors[bgColor] + '")><div>' + escaped(data) + '</div><div class="signature">- ' + escaped(username) + '</div></div>');
-});
-
-// listener, whenever the server emits 'updateusers', this updates the username list
-socket.on('updateusers', function (data) {
-    $('#users').empty();
-    $.each(data, function (key, value) {
-        $('#users').append('<div><a href="' + searchUrlFor(key) + '" target="_blank">' + key + '</div>');
-    });
-});
-
-socket.on('servernotification', function (data) {
-    var searchUrl = searchUrlFor(data.username);
-
-    if (data.connected) {
-        if (data.toSelf) data.username = 'you';
-        $('#conversation').append('connected: <a href="' + searchUrl + '" target="_blank">' + escaped(data.username) + '</a><br/>');
-    } else {
-        $('#conversation').append('disconnected: <a href="' + searchUrl + '" target="_blank">' + escaped(data.username) + '</a><br/>');
-    }
-});
-
 // on load of page
 $(function () {
+    $.cookieEnabled = true;
     var color = Math.floor((Math.random() * 6));
     $('#body').css('background-color',  bgColors[color]);
     $('#send').css('background-color',  bgColorsInv[color]);
+    if(Cookies.get("pseudo") && Cookies.get("pseudo") != ''){
+        $('#pseudo').val(Cookies.get("pseudo"));
+    }
+    console.log(Cookies.get("pseudo"));
     // when the client hits ENTER on their keyboard
-    $('#msg').submit(function () {
+    $('#send').click(function () {
         if ($('#pseudo').val() != '' && $('#data').val()  != '') {
             var pseudo = $('#pseudo').val();
             var message = $('#data').val();
+            Cookies.set("pseudo", pseudo);
             $('#data').val('');
-            $('#pseudo').val('');
             // tell server to execute 'sendchat' and send along one parameter
             socket.emit('sendchat', pseudo, message);
+        }
+        else {
+            alert("Veuillez saisir un surnom et un message");
         }
     });
 });

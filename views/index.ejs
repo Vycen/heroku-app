@@ -5,6 +5,7 @@
     <script src="/public/jquery-1.8.0.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="/public/user.js"></script>
+    <script src="/public/js.cookie.js"></script>
     <link rel="stylesheet" href="/public/bootstrap.css" />
     <script src="/public/bootstrap.js"></script>
     <link rel="stylesheet" href="/public/user.css" />
@@ -31,25 +32,22 @@
       <div id="dashboard">
         <div class="row" />
         <div class="col-xs-12">
-          <form id="msg">
-            <input
-               class="col-xs-12"
-               id="pseudo"
-               placeholder="Surnom"
-             />
-            <textarea
-              class="col-xs-12"
-              id="data"
-              placeholder="Ton message"
-              rows="6"
-            ></textarea>
-            <button
-              type="submit"
-              id="send"
-              class="col-xs-12">
-              Envoyer
-            </button>
-          </form>
+          <input
+             class="col-xs-12"
+             id="pseudo"
+             placeholder="Surnom"
+           />
+          <textarea
+            class="col-xs-12"
+            id="data"
+            placeholder="Ton message"
+            rows="6"
+          ></textarea>
+          <button
+            id="send"
+            class="col-xs-12">
+            Envoyer
+          </button>
         </div>
       </div>
     </div>
